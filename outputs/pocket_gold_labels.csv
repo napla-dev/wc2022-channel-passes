@@ -1,0 +1,117 @@
+match_id,match_min,label,was_undetected,passer,receiver,note
+3816,04:27,ambiguous,0,de Paul,Di Maria,close to in-behind
+3816,10:38,True,0,Al-Dawsari,Kanno,
+3816,26:53,False,0,Papu Gomez,Lautaro,uranuke
+3816,34:41,False,0,de Paul,Messi,uranuke
+3816,39:32,True,0,Di Maria,Romero,
+3816,45:40,True,0,Tagliafico,Papu Gomez,
+3816,45:54,True,0,Molina,de Paul,want Type2
+3816,59:04,ambiguous,0,Messi,Lautaro,uranuke
+3816,66:14,True,0,Abdulhamid,Al-Buraikan,shallow pocket
+3816,74:54,ambiguous,0,Messi,Di Maria,overlap-ish wide in-behind
+3816,80:49,False,0,Alvarez,Lautaro,
+3816,85:06,True,0,Al-Shahrani,Nawaf Al-Abed,
+3816,94:19,ambiguous,0,Enzo,Molina,uranuke
+3816,71:39,True,1,Di Maria,Molina,FN Type1
+3850,07:13,False,0,Bielik,Frankowski,
+3850,11:28,True,0,Di Maria,Messi,Type2
+3850,14:54,True,0,Enzo,Alvarez,Type2
+3850,18:23,False,0,Acuna,Mac Allister,
+3850,23:21,False,0,Molina,Messi,
+3850,27:51,True,0,Di Maria,Molina,Type1
+3850,45:38,False,0,Swiderski,Frankowski,
+3850,48:02,True,0,Cash,Krychowiak,Type1
+3850,53:17,False,0,Alvarez,Messi,uranuke
+3850,57:50,True,0,Bereszynski,Kaminski,
+3850,60:35,True,0,Tagliafico,Mac Allister,Type3
+3850,64:53,True,0,Tagliafico,Mac Allister,Type1
+3850,81:43,True,0,Otamendi,Lautaro,Type2
+3850,88:02,False,0,Zielinski,Skoras,
+3850,17:48,True,1,Di Maria,de Paul,FN Type1
+3850,41:10,True,1,Di Maria,Messi,FN between Type1/2
+3850,76:13,True,1,Molina,de Paul,FN Type1
+10511,00:08,False,0,De Roon,Bergwijn,
+10511,05:38,ambiguous,0,van Dijk,Bergwijn,uranuke
+10511,12:04,True,0,de Paul,Molina,
+10511,18:35,ambiguous,0,Bergwijn,Dumfries,overlap (Lateral)
+10511,22:15,True,0,Depay,Gakpo,Type2
+10511,31:20,True,0,Enzo,Alvarez,Type2
+10511,34:01,ambiguous,0,Messi,Molina,uranuke
+10511,47:25,False,0,Frenkie de Jong,Gakpo,
+10511,50:19,False,0,Messi,Mac Allister,
+10511,69:07,False,0,Ake,Luuk de Jong,was Type2_peel
+10511,76:10,ambiguous,0,Depay,Gakpo,overlap-ish in-behind
+10511,85:53,False,0,Luuk de Jong,Weghorst,
+10511,87:48,True,0,Gakpo,Weghorst,
+10511,96:29,False,0,Koopmeiners,Luuk de Jong,
+10511,96:32,False,0,Luuk de Jong,Gakpo,
+10511,98:49,False,0,van Dijk,Ake,
+10514,11:20,True,0,Sosa,Perisic,
+10514,39:54,ambiguous,0,Pasalic,Kramaric,blocked
+10514,74:37,True,0,Juranovic,Vlasic,
+10514,89:20,ambiguous,0,Tagliafico,Correa,shallow
+10514,28:05,True,1,Tagliafico,Enzo,FN Type1
+10514,29:36,True,1,Modric,Brozovic,FN Type1
+10514,77:37,True,1,Perisic,Orsic,FN Type1 (no ball data)
+10517,16:10,True,0,Messi,de Paul,Type2
+10517,48:44,True,0,Messi,Di Maria,Type2 near Type3
+10517,51:19,True,0,Di Maria,Messi,between Type1/2
+10517,63:01,True,0,Rabiot,Mbappe,Type1
+10517,64:40,True,0,Mac Allister,Messi,Type2
+10517,71:11,True,0,Mac Allister,Acuna,Type1
+10517,90:58,True,0,Acuna,Tagliafico,Type1
+10517,121:40,ambiguous,0,Coman,Kolo Muani,deflected
+10517,07:26,True,1,Mac Allister,Alvarez,FN Type2 (deflection)
+10517,32:28,True,1,Di Maria,Mac Allister,FN Type1
+10517,35:16,True,1,Alvarez,Mac Allister,FN Type1
+10517,58:17,True,1,Di Maria,Alvarez,FN Type2
+10517,70:04,True,1,Mbappe,Rabiot,FN Type1 (failed)
+10517,74:28,True,1,de Paul,Alvarez,FN Type2 behind FB
+3835,01:54,False,0,Alexis Mac Allister,Marcos Acuña,
+3835,02:00,False,0,Gonzalo Montiel,Ángel Di María,
+3835,14:17,False,0,Alexis Vega,Hirving Lozano,
+3835,14:46,False,0,Héctor Moreno,Kevin Álvarez,
+3835,25:54,ambiguous,0,Hirving Lozano,Kevin Álvarez,
+3835,37:15,True,0,Nestor Araujo,Hirving Lozano,
+3835,39:31,True,0,Ángel Di María,Gonzalo Montiel,
+3835,42:13,True,0,Kevin Álvarez,Hirving Lozano,
+3835,47:43,True,0,Alexis Mac Allister,Marcos Acuña,
+3835,66:36,ambiguous,0,Raúl Jiménez,Uriel Antuna,
+3835,66:49,True,0,César Montes,Hirving Lozano,
+3835,67:22,False,0,Raúl Jiménez,Luis Chávez,
+3835,67:43,True,0,Raúl Jiménez,Uriel Antuna,
+3835,67:48,False,0,Raúl Jiménez,Uriel Antuna,
+3835,69:35,False,0,Exequiel Palacios,Marcos Acuña,
+3835,81:21,False,0,Héctor Moreno,Erick Gutierrez,
+3835,84:27,ambiguous,0,Héctor Moreno,Luis Chávez,
+10503,00:07,ambiguous,0,Mathew Leckie,Mitchell Duke,
+10503,00:10,True,0,Mathew Leckie,Jackson Irvine,
+10503,15:30,True,0,Nahuel Molina,Rodrigo de Paul,
+10503,16:13,False,0,Julian Alvarez,Nahuel Molina,
+10503,17:05,False,0,Lionel Messi,Papu Gómez,
+10503,18:08,False,0,Aziz Behich,Riley McGree,
+10503,18:09,True,0,Riley McGree,Jackson Irvine,
+10503,19:24,False,0,Rodrigo de Paul,Lionel Messi,
+10503,20:27,True,0,Papu Gómez,Alexis Mac Allister,
+10503,24:07,False,0,Harry Souttar,Mitchell Duke,
+10503,29:54,False,0,Cristian Romero,Papu Gómez,
+10503,32:33,False,0,Enzo Fernandez,Marcos Acuña,
+10503,32:59,True,0,Nahuel Molina,Papu Gómez,
+10503,38:17,False,0,Milos Degenek,Mathew Leckie,
+10503,40:21,True,0,Papu Gómez,Julian Alvarez,
+10503,46:19,True,0,Jackson Irvine,Aziz Behich,
+10503,50:53,True,0,Aziz Behich,Jackson Irvine,
+10503,54:43,True,0,Marcos Acuña,Alexis Mac Allister,
+10503,58:16,True,0,Mitchell Duke,Mathew Leckie,
+10503,58:24,True,0,Alexis Mac Allister,Julian Alvarez,
+10503,58:59,True,0,Mitchell Duke,Mathew Leckie,
+10503,61:24,True,0,Aziz Behich,Craig Goodwin,
+10503,65:31,ambiguous,0,Lionel Messi,Marcos Acuña,
+10503,66:28,True,0,Milos Degenek,Mathew Leckie,
+10503,72:27,True,0,Nahuel Molina,Lautaro Martinez,
+10503,77:49,False,0,Rodrigo de Paul,Lautaro Martinez,
+10503,84:00,False,0,Kye Rowles,Garang Kuol,
+10503,84:44,True,0,Enzo Fernandez,Lautaro Martinez,
+10503,87:13,True,0,Rodrigo de Paul,Lautaro Martinez,
+10503,93:35,ambiguous,0,Lionel Messi,Rodrigo de Paul,
+10503,97:17,True,0,Lautaro Martinez,Enzo Fernandez,

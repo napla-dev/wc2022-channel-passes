@@ -1,0 +1,31 @@
+match_id,match_min,team,opponent,passer,receiver,pocket_type,gbm_prob,depth_behind,iso_dist
+3841,65:37,Ghana,South Korea,Salis Abdul Samed,Inaki Williams,Type2_halfspace,0.5023683107724868,14.63,10.99
+3845,16:43,Netherlands,Qatar,Denzel Dumfries,Cody Gakpo,Type1_wide,0.4974892403346803,4.78,6.27
+10512,65:57,Portugal,Morocco,Otavio,Cristiano Ronaldo,Type2_halfspace,0.5025185227547438,13.21,11.83
+3817,61:17,Denmark,Tunisia,Rasmus Kristensen,Kasper Dolberg,Type1_wide,0.49688360009367616,7.93,6.23
+3823,18:07,Belgium,Canada,Kevin De Bruyne,Yannick Carrasco,Type2_halfspace,0.5038595814765435,2.85,5.34
+10508,117:08,Spain,Morocco,Álvaro Morata,Nico Williams,Type2_halfspace,0.49568565741836,24.47,24.29
+3822,04:23,Spain,Costa Rica,Pedri,Dani Olmo,Type2_halfspace,0.506786348328223,9.3,9.08
+10516,92:39,Morocco,Croatia,Selim Amallah,Ilias Chair,Type1_wide,0.4923421911352221,5.87,5.97
+3837,63:57,Morocco,Belgium,Achraf Hakimi,Youssef En-Nesyri,Type1_wide,0.49227493173034415,12.98,13.76
+3841,93:53,South Korea,Ghana,Kang-in Lee,Gue-sung Cho,Type2_halfspace,0.49197920371554854,10.81,9.72
+3846,83:22,Wales,England,Connor Roberts,Kieffer Moore,Type1_wide,0.5085770343234401,10.31,10.31
+3840,41:37,Cameroon,Serbia,Bryan Mbeumo,Eric-Maxim Choupo-Moting,Type1_wide,0.508995278982453,7.37,7.51
+3814,07:16,Ecuador,Qatar,Pervis Estupinan,Michael Estrada,Type1_wide,0.48666218083311447,11.76,8.5
+3812,17:34,Senegal,Netherlands,Krépin Diatta,Idrissa Gueye,Type1_wide,0.5155063342389451,7.92,7.2
+3830,53:59,Netherlands,Ecuador,Teun Koopmeiners,Cody Gakpo,Type1_wide,0.5164923641853412,20.64,20.54
+3827,76:40,Brazil,Serbia,Neymar,Rodrygo,Type1_wide,0.5170837011449749,7.42,9.06
+3851,78:52,Mexico,Saudi Arabia,Jorge Sánchez,Uriel Antuna,Type1_wide,0.5177309595541034,11.64,13.91
+3837,34:08,Morocco,Belgium,Nayef Aguerd,Achraf Hakimi,Type1_wide,0.5180891430627567,16.49,11.96
+3830,55:24,Ecuador,Netherlands,Moises Caicedo,Angelo Preciado,Type1_wide,0.5187020700749246,13.58,11.21
+3836,53:57,Japan,Costa Rica,Hiroki Ito,Yuki Soma,Type1_wide,0.4807451269021093,12.19,12.05
+10502,71:12,Netherlands,United States,Denzel Dumfries,Steven Bergwijn,Type1_wide,0.5200214579342894,8.83,9.06
+3817,46:13,Denmark,Tunisia,Rasmus Kristensen,Andreas Skov Olsen,Type1_wide,0.4791376070527218,4.92,11.21
+3839,41:01,Spain,Germany,Ferran Torres,Jordi Alba,Type2_halfspace,0.5213263483934488,10.61,11.95
+3847,32:38,United States,Iran,Yunus Musah,Sergiño Dest,Type1_wide,0.5216439934506611,8.94,10.87
+10510,63:09,Brazil,Croatia,Lucas Paquetá,Eder Militao,Type1_wide,0.4780036077022706,16.17,14.93
+3859,27:05,Cameroon,Brazil,Bryan Mbeumo,Collins Fai,Type1_wide,0.4779607483210572,3.01,3.68
+3822,19:17,Spain,Costa Rica,Pedri,Dani Olmo,Type2_halfspace,0.5221084375432067,11.03,15.06
+3821,01:25,Germany,Japan,David Raum,Kai Havertz,Type1_wide,0.5223508697586906,3.4,5.52
+10505,63:18,England,Senegal,Jordan Henderson,Bukayo Saka,Type1_wide,0.4767072247560753,4.26,4.39
+3842,11:48,Brazil,Switzerland,Lucas Paquetá,Richarlison,Type2_halfspace,0.5234620242157786,24.52,20.53

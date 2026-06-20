@@ -1,0 +1,16 @@
+# Raw PFF data (not redistributable — see README for access)
+data/
+*.jsonl.bz2
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
