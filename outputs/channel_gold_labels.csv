@@ -1,17 +1,17 @@
 match_id,match_min,label,was_undetected,passer,receiver,note
 3816,04:27,ambiguous,0,de Paul,Di Maria,close to in-behind
 3816,10:38,True,0,Al-Dawsari,Kanno,
-3816,26:53,False,0,Papu Gomez,Lautaro,uranuke
-3816,34:41,False,0,de Paul,Messi,uranuke
+3816,26:53,False,0,Papu Gomez,Lautaro,in-behind run
+3816,34:41,False,0,de Paul,Messi,in-behind run
 3816,39:32,True,0,Di Maria,Romero,
 3816,45:40,True,0,Tagliafico,Papu Gomez,
 3816,45:54,True,0,Molina,de Paul,want Type2
-3816,59:04,ambiguous,0,Messi,Lautaro,uranuke
+3816,59:04,ambiguous,0,Messi,Lautaro,in-behind run
 3816,66:14,True,0,Abdulhamid,Al-Buraikan,shallow channel
 3816,74:54,ambiguous,0,Messi,Di Maria,overlap-ish wide in-behind
 3816,80:49,False,0,Alvarez,Lautaro,
 3816,85:06,True,0,Al-Shahrani,Nawaf Al-Abed,
-3816,94:19,ambiguous,0,Enzo,Molina,uranuke
+3816,94:19,ambiguous,0,Enzo,Molina,in-behind run
 3816,71:39,True,1,Di Maria,Molina,FN Type1
 3850,07:13,False,0,Bielik,Frankowski,
 3850,11:28,True,0,Di Maria,Messi,Type2
@@ -21,7 +21,7 @@ match_id,match_min,label,was_undetected,passer,receiver,note
 3850,27:51,True,0,Di Maria,Molina,Type1
 3850,45:38,False,0,Swiderski,Frankowski,
 3850,48:02,True,0,Cash,Krychowiak,Type1
-3850,53:17,False,0,Alvarez,Messi,uranuke
+3850,53:17,False,0,Alvarez,Messi,in-behind run
 3850,57:50,True,0,Bereszynski,Kaminski,
 3850,60:35,True,0,Tagliafico,Mac Allister,Type3
 3850,64:53,True,0,Tagliafico,Mac Allister,Type1
@@ -31,12 +31,12 @@ match_id,match_min,label,was_undetected,passer,receiver,note
 3850,41:10,True,1,Di Maria,Messi,FN between Type1/2
 3850,76:13,True,1,Molina,de Paul,FN Type1
 10511,00:08,False,0,De Roon,Bergwijn,
-10511,05:38,ambiguous,0,van Dijk,Bergwijn,uranuke
+10511,05:38,ambiguous,0,van Dijk,Bergwijn,in-behind run
 10511,12:04,True,0,de Paul,Molina,
 10511,18:35,ambiguous,0,Bergwijn,Dumfries,overlap (Lateral)
 10511,22:15,True,0,Depay,Gakpo,Type2
 10511,31:20,True,0,Enzo,Alvarez,Type2
-10511,34:01,ambiguous,0,Messi,Molina,uranuke
+10511,34:01,ambiguous,0,Messi,Molina,in-behind run
 10511,47:25,False,0,Frenkie de Jong,Gakpo,
 10511,50:19,False,0,Messi,Mac Allister,
 10511,69:07,False,0,Ake,Luuk de Jong,was Type2_peel
