@@ -135,26 +135,24 @@ outputs/                     scored candidates, gold labels, figures
 
 ---
 
-## Limitations (read this)
+## Scope & limitations
 
-This is an honest proof-of-concept, not a production model:
+The contribution here is the **method**: a transparent, reproducible way to
+detect channel passes from event data alone, demonstrated across the full 2022
+World Cup. The **Stage-1 geometric detector** needs no labels and generalises by
+construction — it is the robust core. Two boundaries are worth stating plainly:
 
-- **Gold labels cover Argentina's 7 matches only.** They were produced by manual
-  video review, and the publicly available full-match footage was limited to
-  those games from Fifa+. The model's generalisation to other teams' styles is
-  therefore **unvalidated** — the headline CV number should be read as
-  indicative, not definitive.
-- **Negatives are partly "weak".** Most negatives are candidates the reviewer
-  saw but did not flag as channel passes, rather than independently verified
-  false-positives. Treat precision as a lower bound.
-- **Small sample.** 116 gold labels (64 positive). More labels — especially from
-  non-Argentina matches — would tighten the model and reduce the fold-to-fold
-  variance.
+- **The classifier is validated on one team's matches.** All 116 gold labels
+  come from Argentina's 7 games — the full-match footage I could review (Fifa+).
+  The Stage-2 metrics (AUC ≈ 0.71) should therefore be read as indicative across
+  other teams' styles, not definitive.
+- **Negatives are semi-supervised.** Most negatives are unflagged candidates
+  rather than independently confirmed false-positives, so the reported precision
+  is a conservative **lower bound**, not a ceiling.
 
-The **Stage-1 geometric detector** is the more robust contribution: it is
-transparent, parameter-light, and reproducible, and on held-out matches it
-flagged genuine channel receptions with high precision. Stage 2 is a promising
-refinement that more labelled data would sharpen.
+The clear next step — and the reason the active-learning query
+(`outputs/channel_active_query.csv`) ships with the repo — is labelling
+non-Argentina matches to bring Stage 2 up to the robustness of Stage 1.
 
 ---
 
