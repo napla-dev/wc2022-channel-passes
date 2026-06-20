@@ -1,4 +1,4 @@
-Pocket-pass classifier: LR vs GBM
+Channel-pass classifier: LR vs GBM
 ============================================================
 Training: 52 positives  151 negatives (weak)  7 gold matches (all Argentina)
 
@@ -15,19 +15,19 @@ HistGBM:
   F1        : 0.347 +/- 0.236
 
 LR coefficients:
-                    feature      coef
-                abs_start_y  1.464606
-                   iso_dist -1.059601
-               depth_behind  0.556063
-                    run_mag  0.542630
-                  abs_end_y -0.472890
-pocket_type_Type2_halfspace  0.444808
-   pocket_type_Type3_switch -0.387959
-           passer_past_line -0.323793
-     pocket_type_Type1_wide -0.317526
-             passer_vs_line  0.256666
-                      end_x  0.239238
-                     n_line -0.172285
+                     feature      coef
+                 abs_start_y  1.464606
+                    iso_dist -1.059601
+                depth_behind  0.556063
+                     run_mag  0.542630
+                   abs_end_y -0.472890
+channel_type_Type2_halfspace  0.444808
+   channel_type_Type3_switch -0.387959
+            passer_past_line -0.323793
+     channel_type_Type1_wide -0.317526
+              passer_vs_line  0.256666
+                       end_x  0.239238
+                      n_line -0.172285
 
 GBM feature importances (permutation, AUC drop):
          feature  importance      std
@@ -44,4 +44,4 @@ GBM feature importances (permutation, AUC drop):
           length    0.000000 0.000000
 passer_past_line    0.000000 0.000000
 
-Ensemble (avg) scored 2226 candidates -> pocket_passes_scored.csv
+Ensemble (avg) scored 2226 candidates -> channel_passes_scored.csv

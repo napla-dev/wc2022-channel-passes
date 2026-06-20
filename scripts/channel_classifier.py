@@ -1,4 +1,4 @@
-"""Pocket-pass classifier — logistic regression vs GBM comparison.
+"""Channel-pass classifier — logistic regression vs GBM comparison.
 
 Training strategy (semi-supervised with weak labels)
 -----------------------------------------------------
@@ -14,9 +14,9 @@ Cross-validation: GroupKFold with k = n_gold_matches (leave-one-match-out).
 
 Outputs
 -------
-outputs/pocket_clf_report.txt     -- CV comparison table + feature importances
-outputs/pocket_passes_scored.csv  -- all 2226 candidates with lr_prob, gbm_prob
-outputs/pocket_active_query.csv   -- 30 most uncertain cases (GBM) to label next
+outputs/channel_clf_report.txt      -- CV comparison table + feature importances
+outputs/channel_passes_scored.csv   -- all candidates with lr_prob, gbm_prob
+outputs/channel_active_query.csv    -- 30 most uncertain cases (GBM) to label next
 """
 from __future__ import annotations
 
@@ -53,7 +53,7 @@ NUMERIC_FEATS = [
     "passer_vs_line",
     "passer_past_line",  # binary: passer already past defensive line
 ]
-CAT_FEATS = ["pocket_type", "ballHeight"]
+CAT_FEATS = ["channel_type", "ballHeight"]
 
 
 def build_features(df: pd.DataFrame) -> pd.DataFrame:
@@ -66,13 +66,13 @@ def build_features(df: pd.DataFrame) -> pd.DataFrame:
     return pd.concat([df[NUMERIC_FEATS], dummies], axis=1)
 
 
-def load_training(pp_path: Path, gold_path: Path):
-    pp   = pd.read_csv(pp_path)
+def load_training(cp_path: Path, gold_path: Path):
+    cp   = pd.read_csv(cp_path)
     gold = pd.read_csv(gold_path)
-    pp["match_id"]   = pp["match_id"].astype(str)
+    cp["match_id"]   = cp["match_id"].astype(str)
     gold["match_id"] = gold["match_id"].astype(str)
 
-    cands = pp[pp["match_id"].isin(set(gold["match_id"]))].copy()
+    cands = cp[cp["match_id"].isin(set(gold["match_id"]))].copy()
 
     gold_tf = gold[gold["label"].isin(["True", "False"])]
     cands = cands.merge(gold_tf[["match_id", "match_min", "label"]],
@@ -131,14 +131,14 @@ def print_cv(name: str, res: dict, k: int):
 
 
 def main():
-    pp_path   = OUT_DIR / "pocket_passes.csv"
-    gold_path = OUT_DIR / "pocket_gold_labels.csv"
+    cp_path   = OUT_DIR / "channel_passes.csv"
+    gold_path = OUT_DIR / "channel_gold_labels.csv"
 
     print("=" * 64)
-    print("Pocket-pass classifier: LR vs GBM")
+    print("Channel-pass classifier: LR vs GBM")
     print("=" * 64)
 
-    X, y, groups = load_training(pp_path, gold_path)
+    X, y, groups = load_training(cp_path, gold_path)
     pos = int(y.sum()); neg = len(y) - pos
     k   = groups.nunique()
     print(f"\nTraining: {len(y)} rows  positives={pos}  negatives={neg}"
@@ -180,43 +180,43 @@ def main():
     print("\nGBM feature importances (permutation, AUC drop):")
     print(imp_df.head(12)[["feature", "importance", "std"]].to_string(index=False))
 
-    # ── Score all 2226 candidates ─────────────────────────────────────────────
-    pp_all = pd.read_csv(pp_path)
-    pp_all["match_id"] = pp_all["match_id"].astype(str)
-    X_all  = build_features(pp_all).reindex(columns=X.columns, fill_value=0.0)
+    # ── Score all candidates ──────────────────────────────────────────────────
+    cp_all = pd.read_csv(cp_path)
+    cp_all["match_id"] = cp_all["match_id"].astype(str)
+    X_all  = build_features(cp_all).reindex(columns=X.columns, fill_value=0.0)
 
-    pp_all["lr_prob"]  = lr_pipe.predict_proba(X_all)[:, 1]
-    pp_all["gbm_prob"] = gbm_clf.predict_proba(X_all)[:, 1]
+    cp_all["lr_prob"]  = lr_pipe.predict_proba(X_all)[:, 1]
+    cp_all["gbm_prob"] = gbm_clf.predict_proba(X_all)[:, 1]
     # ensemble: simple average
-    pp_all["ml_probability"] = (pp_all["lr_prob"] + pp_all["gbm_prob"]) / 2
+    cp_all["ml_probability"] = (cp_all["lr_prob"] + cp_all["gbm_prob"]) / 2
 
-    scored_path = OUT_DIR / "pocket_passes_scored.csv"
-    pp_all.to_csv(scored_path, index=False)
-    print(f"\nScored {len(pp_all)} candidates -> {scored_path.name}")
+    scored_path = OUT_DIR / "channel_passes_scored.csv"
+    cp_all.to_csv(scored_path, index=False)
+    print(f"\nScored {len(cp_all)} candidates -> {scored_path.name}")
 
     for col, name in [("lr_prob", "LR"), ("gbm_prob", "GBM"),
                       ("ml_probability", "Ensemble")]:
-        counts = {t: int((pp_all[col] >= t).sum()) for t in [0.3, 0.5, 0.7, 0.9]}
+        counts = {t: int((cp_all[col] >= t).sum()) for t in [0.3, 0.5, 0.7, 0.9]}
         print(f"  {name:8s} thresholds: {counts}")
 
     # ── Active-learning query (GBM uncertainty) ───────────────────────────────
     gold      = pd.read_csv(gold_path)
     gold_mids = set(gold["match_id"].astype(str))
-    unlabelled = pp_all[~pp_all["match_id"].isin(gold_mids)].copy()
+    unlabelled = cp_all[~cp_all["match_id"].isin(gold_mids)].copy()
     unlabelled["uncertainty"] = (unlabelled["gbm_prob"] - 0.5).abs()
     query = (unlabelled.sort_values("uncertainty")
              .head(30)[["match_id", "match_min", "team", "opponent",
-                         "passer", "receiver", "pocket_type",
+                         "passer", "receiver", "channel_type",
                          "gbm_prob", "depth_behind", "iso_dist"]])
-    query.to_csv(OUT_DIR / "pocket_active_query.csv", index=False)
-    print("\nActive-learning query (30 most uncertain, GBM) -> pocket_active_query.csv")
-    print(query[["match_id", "match_min", "pocket_type", "gbm_prob"]
+    query.to_csv(OUT_DIR / "channel_active_query.csv", index=False)
+    print("\nActive-learning query (30 most uncertain, GBM) -> channel_active_query.csv")
+    print(query[["match_id", "match_min", "channel_type", "gbm_prob"]
                 ].head(10).to_string(index=False))
 
     # ── Write report ──────────────────────────────────────────────────────────
-    rpath = OUT_DIR / "pocket_clf_report.txt"
+    rpath = OUT_DIR / "channel_clf_report.txt"
     with open(rpath, "w", encoding="utf-8") as f:
-        f.write("Pocket-pass classifier: LR vs GBM\n")
+        f.write("Channel-pass classifier: LR vs GBM\n")
         f.write("=" * 60 + "\n")
         f.write(f"Training: {pos} positives  {neg} negatives (weak)  "
                 f"{k} gold matches (all Argentina)\n\n")
@@ -231,8 +231,8 @@ def main():
         f.write(coef_df.head(12)[["feature", "coef"]].to_string(index=False))
         f.write("\n\nGBM feature importances (permutation, AUC drop):\n")
         f.write(imp_df.head(12)[["feature", "importance", "std"]].to_string(index=False))
-        f.write(f"\n\nEnsemble (avg) scored {len(pp_all)} candidates"
-                f" -> pocket_passes_scored.csv\n")
+        f.write(f"\n\nEnsemble (avg) scored {len(cp_all)} candidates"
+                f" -> channel_passes_scored.csv\n")
     print(f"\nReport -> {rpath.name}")
 
 

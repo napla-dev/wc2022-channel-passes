@@ -4,8 +4,8 @@ from __future__ import annotations
 import matplotlib as mpl
 
 # ── portfolio style ─────────────────────────────────────────────────────────────
-ATTACK   = "#1A78CF"   # blue  — attacking / playing pocket passes
-CONCEDE  = "#E1574C"   # red   — defending / conceding pocket passes
+ATTACK   = "#1A78CF"   # blue  — attacking / playing channel passes
+CONCEDE  = "#E1574C"   # red   — defending / conceding channel passes
 INK      = "#22303C"   # near-black text
 MUTED    = "#8A99A6"   # grey
 PITCH_LN = "#C7D0D7"   # pitch lines on white

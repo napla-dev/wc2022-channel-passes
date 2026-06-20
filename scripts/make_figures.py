@@ -1,10 +1,10 @@
-"""Generate all portfolio figures from outputs/pocket_passes_scored.csv.
+"""Generate all portfolio figures from outputs/channel_passes_scored.csv.
 
 No raw tracking/event data required — everything is computed from the scored
 candidate table (a few hundred KB), so the figures are fully reproducible from
 this repository alone.
 
-A pocket pass is counted when the Stage-2 classifier probability
+A channel pass is counted when the Stage-2 classifier probability
 (``ml_probability``, the LR+GBM ensemble) is >= THRESHOLD (default 0.5).
 Team rates are normalised per match played (teams played 3-7 games).
 
@@ -60,10 +60,10 @@ def fig_team_rankings(df, mp, thr, top=16):
 
     fig, axes = plt.subplots(1, 2, figsize=(15, 8))
     _barh(axes[0], attack.sort_values(ascending=False).head(top),
-          viz.ATTACK, "Most pocket passes PLAYED", "pocket passes per match")
+          viz.ATTACK, "Most channel passes PLAYED", "channel passes per match")
     _barh(axes[1], conceded.sort_values(ascending=True).head(top),
-          viz.CONCEDE, "Fewest pocket passes CONCEDED", "pocket passes conceded per match")
-    fig.suptitle("Pocket passes into the full-back / centre-back channel — WC2022",
+          viz.CONCEDE, "Fewest channel passes CONCEDED", "channel passes conceded per match")
+    fig.suptitle("Passes into the full-back / centre-back channel — WC2022",
                  fontsize=16, fontweight="bold", x=0.5, y=0.98)
     fig.text(0.5, 0.005,
              f"Stage-2 classifier prob ≥ {thr}; per match played. "
@@ -89,11 +89,11 @@ def fig_scatter(df, mp, thr):
     for t in teams:
         ax.annotate(t, (x[t], y[t]), fontsize=8, xytext=(4, 4),
                     textcoords="offset points", color=viz.INK)
-    ax.set_xlabel("Pocket passes PLAYED per match  →  more attacking through the channel",
+    ax.set_xlabel("Channel passes PLAYED per match  →  more attacking through the channel",
                   fontsize=11)
-    ax.set_ylabel("Pocket passes CONCEDED per match  →  channel more exposed",
+    ax.set_ylabel("Channel passes CONCEDED per match  →  channel more exposed",
                   fontsize=11)
-    ax.set_title("Who attacked — and who defended — the FB/CB pocket  (WC2022)",
+    ax.set_title("Who attacked — and who defended — the FB/CB channel  (WC2022)",
                  fontsize=15, fontweight="bold", loc="left", pad=12)
     # quadrant hints
     ax.text(ax.get_xlim()[1], my, "  conceded avg", fontsize=8, color=viz.MUTED, va="bottom")
@@ -112,10 +112,10 @@ def fig_reception_map(df, thr):
     hb = ax.hexbin(hi["end_x"], hi["end_y"], gridsize=22, cmap="YlOrRd",
                    mincnt=1, alpha=0.9, zorder=2, extent=(-52.5, 52.5, -34, 34))
     cb = fig.colorbar(hb, ax=ax, shrink=0.6, pad=0.01)
-    cb.set_label("pocket receptions", fontsize=9)
+    cb.set_label("channel receptions", fontsize=9)
     cb.ax.tick_params(length=0)
     ax.annotate("attack →", xy=(30, -31), fontsize=11, color=viz.MUTED, style="italic")
-    ax.set_title("Where pocket passes are received  (WC2022, all teams)",
+    ax.set_title("Where channel passes are received  (WC2022, all teams)",
                  fontsize=15, fontweight="bold", loc="left")
     fig.text(0.5, 0.02,
              f"Reception point = receiver's location at the next event. "
@@ -133,10 +133,10 @@ def fig_players(df, thr, top=12):
 
     fig, axes = plt.subplots(1, 2, figsize=(15, 7))
     _barh(axes[0], passers.astype(float),
-          viz.ATTACK, "Top passers into the pocket", "pocket passes played", fmt="{:.0f}")
+          viz.ATTACK, "Top passers into the channel", "channel passes played", fmt="{:.0f}")
     _barh(axes[1], receivers.astype(float),
-          "#2E9E6B", "Top receivers in the pocket", "pocket passes received", fmt="{:.0f}")
-    fig.suptitle("Individuals — pocket passes  (WC2022)",
+          "#2E9E6B", "Top receivers in the channel", "channel passes received", fmt="{:.0f}")
+    fig.suptitle("Individuals — channel passes  (WC2022)",
                  fontsize=16, fontweight="bold", x=0.5, y=0.99)
     fig.text(0.5, 0.005, f"Stage-2 classifier prob ≥ {thr}. PFF FC WC2022 event data.",
              ha="center", fontsize=9, color=viz.MUTED)
@@ -153,7 +153,7 @@ def fig_combos(df, thr, top=12):
 
     fig, ax = plt.subplots(figsize=(11, 7))
     _barh(ax, combos.astype(float), "#7B5EA7",
-          "Top passer → receiver combinations", "pocket passes", fmt="{:.0f}")
+          "Top passer → receiver combinations", "channel passes", fmt="{:.0f}")
     fig.text(0.5, 0.01, f"Stage-2 classifier prob ≥ {thr}. PFF FC WC2022 event data.",
              ha="center", fontsize=9, color=viz.MUTED)
     fig.tight_layout(rect=(0, 0.03, 1, 1))
@@ -170,7 +170,7 @@ def main():
     viz.apply_style()
     FIG.mkdir(parents=True, exist_ok=True)
 
-    df = pd.read_csv(OUT / "pocket_passes_scored.csv")
+    df = pd.read_csv(OUT / "channel_passes_scored.csv")
     df["match_id"] = df["match_id"].astype(str)
     mp = matches_played(df)
 

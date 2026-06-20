@@ -7,7 +7,7 @@ match_id,match_min,label,was_undetected,passer,receiver,note
 3816,45:40,True,0,Tagliafico,Papu Gomez,
 3816,45:54,True,0,Molina,de Paul,want Type2
 3816,59:04,ambiguous,0,Messi,Lautaro,uranuke
-3816,66:14,True,0,Abdulhamid,Al-Buraikan,shallow pocket
+3816,66:14,True,0,Abdulhamid,Al-Buraikan,shallow channel
 3816,74:54,ambiguous,0,Messi,Di Maria,overlap-ish wide in-behind
 3816,80:49,False,0,Alvarez,Lautaro,
 3816,85:06,True,0,Al-Shahrani,Nawaf Al-Abed,

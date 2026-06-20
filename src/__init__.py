@@ -1,1 +1,1 @@
-"""WC2022 pocket-pass detection (event-data only)."""
+"""WC2022 full-back / centre-back channel-pass detection (event-data only)."""

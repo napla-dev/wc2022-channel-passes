@@ -1,4 +1,4 @@
-match_id,match_min,team,opponent,passer,receiver,pocket_type,gbm_prob,depth_behind,iso_dist
+match_id,match_min,team,opponent,passer,receiver,channel_type,gbm_prob,depth_behind,iso_dist
 3841,65:37,Ghana,South Korea,Salis Abdul Samed,Inaki Williams,Type2_halfspace,0.5023683107724868,14.63,10.99
 3845,16:43,Netherlands,Qatar,Denzel Dumfries,Cody Gakpo,Type1_wide,0.4974892403346803,4.78,6.27
 10512,65:57,Portugal,Morocco,Otavio,Cristiano Ronaldo,Type2_halfspace,0.5025185227547438,13.21,11.83

@@ -1,4 +1,4 @@
-"""Data loading for the WC2022 pocket-pass study (event data only).
+"""Data loading for the WC2022 channel-pass study (event data only).
 
 Two on-disk layouts are supported (auto-detected):
 
@@ -43,7 +43,7 @@ def _resolve(data_dir: str | Path, match_id: int | str, kind: str) -> Path:
 def available_matches_event_only(data_dir: str | Path = "data") -> list[str]:
     """Return match ids (sorted) that have both metadata + event data.
 
-    Pocket-pass extraction is event-only, so this returns all 64 WC2022 matches
+    Channel-pass extraction is event-only, so this returns all 64 WC2022 matches
     (not just the ~50 that also ship tracking data).
     """
     d = Path(data_dir)

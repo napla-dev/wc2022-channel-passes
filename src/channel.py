@@ -1,14 +1,19 @@
-"""Pass into the pocket (FB-CB channel) — formation-agnostic, spatial detector.
+"""Pass into the full-back / centre-back channel — formation-agnostic, spatial.
+
+The *channel* is the gap between a defending full-back (or wing-back) and the
+nearest centre-back. A pass received there — behind the defensive line, out in
+the wide channel or half-space — is one of the most dangerous entries in the
+modern game.
 
 Why spatial? Modern defending is positionally fluid (full-backs push up, midfielders
 drop in), so using a player's *registered* position (LB/CB/RB) to decide who is in
-the last line is not rigorous — it misses pockets behind a vacated full-back. The
+the last line is not rigorous — it misses receptions behind a vacated full-back. The
 event snapshot already contains every player's x/y at the pass, so we determine the
 last line **purely from coordinates** (no extra tracking cost) and define the
-pocket without position labels at all:
+channel pass without position labels at all:
 
-    pocket = a pass RECEIVED behind the defending last line, in a LATERAL GAP
-             (isolated from the nearest last-line defender by >= ``iso_min`` m),
+    channel pass = a pass RECEIVED behind the defending last line, in a LATERAL
+             GAP (isolated from the nearest last-line defender by >= ``iso_min`` m),
              out in the channel/half-space (not central), in the final third.
 
 Last line = the rearmost spatial band of the defending outfield players (anyone
@@ -128,7 +133,7 @@ def extract_match(match_id, data_dir="data", band_width=10.0, min_line=3,
                   central_max_y=7.0, wing_min_y=20.0, switch_dy=25.0,
                   switch_lookback=3, type2_refine=True, type2_run_min=9.0,
                   type2_channel_min_y=8.0):
-    """Return {'rows': [...pocket passes...], 'n_pass_eval': int, 'n_D_total': int}."""
+    """Return {'rows': [...channel passes...], 'n_pass_eval': int, 'n_D_total': int}."""
     try:
         meta = dl.load_meta(match_id, data_dir)
         events = dl.load_events(match_id, data_dir)
@@ -170,7 +175,7 @@ def extract_match(match_id, data_dir="data", band_width=10.0, min_line=3,
             ex_o, ey_o = rx * d, ry * d                  # reception point
             sx_o, sy_o = sx * d, sy * d                  # passer ≈ ball at pass
 
-            # --- spatial last line + pocket geometry (label-free) ---
+            # --- spatial last line + channel geometry (label-free) ---
             line = _last_line(_outfield(ev, not is_home, d), band_width, min_line)
             if len(line) < min_line:
                 continue
@@ -182,7 +187,7 @@ def extract_match(match_id, data_dir="data", band_width=10.0, min_line=3,
                 continue
             if abs(ey_o) < channel_min:                  # not dead central
                 continue
-            # the "pocket": receiver isolated from the last line (a real gap)
+            # the channel reception: receiver isolated from the last line (a real gap)
             dists = sorted(line, key=lambda p: math.hypot(ex_o - p[0], ey_o - p[1]))
             iso = math.hypot(ex_o - dists[0][0], ey_o - dists[0][1])
             if iso < iso_min:
@@ -252,7 +257,7 @@ def extract_match(match_id, data_dir="data", band_width=10.0, min_line=3,
                 "run_x": None if run_x is None else round(run_x, 2),
                 "run_y": None if run_y is None else round(run_y, 2),
                 "run_mag": None if run_mag is None else round(run_mag, 2),
-                "pocket_type": ptype, "attack_dir": d,
+                "channel_type": ptype, "attack_dir": d,
             })
 
         return {"rows": rows, "n_pass_eval": n_pass_eval, "n_D_total": n_D_total}
